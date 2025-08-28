@@ -1,7 +1,7 @@
 # ****************************************************************************
-#  Exhaustive search of MDS rotational-add diffusion layers
+#  Experiments on exhaustive search of MDS rot-add diffusion layers
 #  Goal: fix m, search all MDS L4m having rotational offsets of weight 5
-#
+#        when g1=0
 #  Baofeng Wu, Aug 2025
 # ****************************************************************************
 
@@ -36,7 +36,7 @@ def search_light_mds_L4m(p: int, m: int, g2: int) -> list:
 
 def main():
     p = 65537
-    ms = [4, 8]
+    ms = [4, 5, 6, 7, 8, 9, 10, 16, 32]
     g2_lists = {m: range(1, m) for m in ms}
 
     all_mds_cases = dict()
@@ -51,9 +51,14 @@ def main():
         results = table(
             all_mds_cases[m], header_row=["Case", "g2", "I", "J"], frame=True
         )
-        with open(f"./results/light_mds_L4m_m{m}.txt", "w") as f:
-            f.write(f"m = {m}\n")
-            f.write(str(results))
+
+        from pathlib import Path
+        file_folder = Path('results')
+        file_path = file_folder / f"light_mds_L4m_m{m}.txt"
+        file_folder.mkdir(parents=True, exist_ok=True)
+        file_path.write_text(f"Results for p = 65537, m = {m}:\n" + str(results))
+
+        print(f"Results saved to: ", file_path.absolute())
 
 
 if __name__ == "__main__":

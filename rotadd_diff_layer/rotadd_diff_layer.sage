@@ -1,9 +1,9 @@
 # ****************************************************************************
-#  Experimental rsearch on rotational-add diffusion layers
-#  Goal: characterization and construction of MDS rot-add diffusion layers
+#  Implement the class RotAddDiffLayer
+#  Goal: characterize various properties of rot-add diffusion layers
+#        including MDS prop.
 #
-#  Codes written by Baofeng Wu (wubaofeng@iie.ac.cn)
-#  Date: August 2025
+#  Codes written by Baofeng Wu (wubaofeng@iie.ac.cn)  Aug. 2025
 #  Currently a plain impl; more optimizations needed.
 # ****************************************************************************
 
