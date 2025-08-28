@@ -1,2 +1,12 @@
 # RotAdd_MDS_diffusion_layers
 Codes for the paper "MDS Diffusion Layers for Arithmetization-Oriented Symmetric Ciphers: The Rotational-Add Construction" (ToSC 2025 issue 3).
+
+
+
+
+
+
+
+```bash
+$ git clone –recursive-submodules https://github.com/ba0fengwu/rotadd_mds_diffusion_layers.git
+```
