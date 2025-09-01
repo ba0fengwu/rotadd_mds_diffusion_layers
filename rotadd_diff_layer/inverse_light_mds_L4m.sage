@@ -2,10 +2,9 @@
 #  Comput inverses of explicit constructions of MDS rot-add diffusion 
 #  layers in three cases
 #  Baofeng Wu, Aug 2025
+#  ⚠ In the output file, the inverse poly may be very long, please 
+#    "disable word wrap" in your text editor to view it properly.
 # ****************************************************************************
-
-from textwrap import fill
-
 
 def get_data(file_path):
     data = []
@@ -37,7 +36,7 @@ for case, file in files.items():
     try:
         all_data = get_data(file)
     except FileNotFoundError:
-        print(f'File {file} not found. Run construct ... first.')
+        print(f'File {file} not found. Run construct_light_ ... first.')
         continue
 
     result = []
@@ -51,14 +50,20 @@ for case, file in files.items():
             k = int(k)
 
         if data[2] == '--':
-            result.append(data[:2] + ['--'])
+            result.append(data[:2] + ['--', '--'])
         else:
             c = coefficients[case]
             poly = c[0] + c[1]*x^(k) + c[2]*x^(k+t) + c[3]*x^(k+2*t) + c[4]*x^(3*t)
             mod_poly = x^(4*t) - 1
             inv_poly = poly.inverse_mod(mod_poly)
+            denominator = inv_poly.denominator()
+            """
+            LCM of denominators of coefficients of the inverse poly.
+            Divisors of denominator are included in the 'excluded primes'
+            in the construction of the MDS diff layer.
+            """
             poly_width = max(poly_width, len(str(inv_poly)))
-            result.append(data[:2] + [inv_poly])
+            result.append(data[:2] + [inv_poly, denominator])
 
     with open(f'results/inverses_mds_L4m_{case}.txt', 'w') as f:
         f.write(f'Inverses of example constructions in {case},\n')
@@ -66,7 +71,8 @@ for case, file in files.items():
         header = [
             "condition t|m",
             "g2=km/t",
-            "f(x) s.t. inverse = f(x^(m/t))".ljust(poly_width)
+            "f(x) s.t. inverse = f(x)◦x^(m/t)",
+            "denominator of f"
         ]
         result = table(result, header_row=header, frame=True)
         f.write(str(result))
