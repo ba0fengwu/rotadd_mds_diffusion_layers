@@ -11,6 +11,7 @@ git clone recurse-submodules https://github.com/ba0fengwu/rotadd_mds_diffusion_l
 $ cd rotadd_diff_layer
 $ sage search_light_mds_L4m.sage # generate results in Append. A of the paper
 $ sage construct_light_mds_L4m.sage # generate results in Append. B of the paper
+$ sage inverse_light_mds_L4m.sage # generate inverses of MDS constructions in Append. B
 ```
 
 ### 2. Test efficiency of YuX and YuX_dag

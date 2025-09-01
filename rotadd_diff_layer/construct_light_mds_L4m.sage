@@ -53,7 +53,7 @@ def main(t_max=16):
     for t in range(3, t_max+1):
         k_lists = {'Case 2': ZZ(t).coprime_integers(t)}
         k_lists['Case 4'] = [k for k in k_lists['Case 2'] if k/t > 1/2]
-        k_lists['Case 12'] = k_lists['Case 4']        
+        k_lists['Case 12'] = k_lists['Case 4']
         deg_t_polys = {
             'Case 2': [(-x)^t - (1-x)^(t-k) for k in k_lists['Case 2']],
             'Case 4': [x^t - (-x-1)^(t-k) for k in k_lists['Case 4']],

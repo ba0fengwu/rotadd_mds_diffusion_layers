@@ -189,7 +189,7 @@ class RotAddDiffLayer:
         Return the inverse associated polynomial of the diffusion layer 
         over Q, if it exists.
         This is to show general representation of the inverse ignoring p.
-        """        
+        """
         R.<x> = QQ[]
         mod_poly = x^(self.dim * self.block_size) - 1
         poly = self.associate_polynomial_overZ()
@@ -201,8 +201,7 @@ class RotAddDiffLayer:
     def inverse_associate_polynomial_overFp(self) -> Polynomial:
         """
         Return the inverse associated polynomial of the diffusion layer 
-        over Q, if it exists.
-        This is to show general representation of the inverse ignoring p.
+        over Fp, if it exists.
         """
         if not self.is_invertible_overFp():
             raise ValueError("The diffusion layer is not invertible over Fp.")
@@ -501,7 +500,7 @@ class FourOrdRotAddDiffLayer(RotAddDiffLayer):
 
 
 # ****************************************************************************
-# some special matrices used in the study
+# Functions for def some special matrices used in the study
 # ****************************************************************************
 
 @matrix_method
