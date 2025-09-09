@@ -40,7 +40,6 @@ for case, file in files.items():
         continue
 
     result = []
-    poly_width = 0
     for data in all_data:
         t = int(data[0].split('|')[0])
         k = data[1].split('m')[0]
@@ -62,7 +61,6 @@ for case, file in files.items():
             Divisors of denominator are included in the 'excluded primes'
             in the construction of the MDS diff layer.
             """
-            poly_width = max(poly_width, len(str(inv_poly)))
             result.append(data[:2] + [inv_poly, denominator])
 
     with open(f'results/inverses_mds_L4m_{case}.txt', 'w') as f:
