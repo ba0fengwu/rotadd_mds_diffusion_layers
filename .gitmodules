@@ -1,2 +1,5 @@
 
 
+[submodule "Yux_dag_efficiency_test/Yux_FHE_HElib"]
+	path = Yux_dag_efficiency_test/Yux_FHE_HElib
+	url = git@github.com:ba0fengwu/Yux_FHE_HElib.git

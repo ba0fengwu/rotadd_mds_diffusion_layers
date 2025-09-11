@@ -21,11 +21,11 @@ $ sage inverse_light_mds_L4m.sage # generate inverses of MDS constructions in Ap
 
 ### 2. Test efficiency of  YuX_dag and YuX
 The directory `Yux_dag_efficiency_test` contains:
-- codes from the repository of YuX: `https://github.com/YuXenc/Yux_FHE_HElib`
+- codes from a fork of the repository of YuX: `https://github.com/YuXenc/Yux_FHE_HElib`
 - implementation of YuX_dag by  directly replacing the linear diffusion layer of YuX with a rotational-add diffusion layer using 5 rotations 
 - scripts to test efficiency of YuX_dag and YuX
 
-To perform the test, you should install the homomomorphic encryption scheme library HElib first. Follow the instructions in `https://github.com/homenc/HElib/blob/master/INSTALL.md` to install it and we suggest the library build method. For a root user, the default path of HElib is `/usr/local/helib-pack/`.
+To perform the test, you should install the homomomorphic encryption scheme library HElib first. Follow the instructions in `https://github.com/homenc/HElib/blob/master/INSTALL.md` to install it and we suggest the library build method (Option 1). For a root user, the default path of HElib is `/usr/local/helib_pack/`.
 ```bash
 $ git clone https://github.com/homenc/HElib.git
 $ cd HElib
