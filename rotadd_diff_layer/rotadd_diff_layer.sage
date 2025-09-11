@@ -227,7 +227,7 @@ class RotAddDiffLayer:
 
     def inverse_linear_diffusion(self, input_vector: list[int]) -> list:
         """
-        Apply the linear diffusion layer to the input vector.
+        Apply the inverse linear diffusion layer to the input vector.
         Entries of input_vector are integers modulo p.
         """
         if not self.is_invertible_overFp():
