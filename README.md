@@ -26,6 +26,9 @@ $ sage construct_light_mds_L4m.sage # generate results in Append. B of the paper
 $ sage inverse_light_mds_L4m.sage # generate inverses of MDS constructions in Append. B
 ```
 
+The results will be saved in `rotadd_diff_layer/results` directory. Note that some result files contain very broad tables. Please 
+"disable word wrap" in your text editor to view it properly.
+
 ---
 
 ### 2. Test efficiency of  YuX_dag and YuX
