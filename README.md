@@ -62,8 +62,8 @@ Then go back to the directory `Yux_dag_efficiency_test` and run the bash script 
 
 (1)
 ```bash
-$ ./run_with_logging.sh ./Yux_FHE_HElib/tests/test-blockcipher-F_p`
-$ ./run_with_logging.sh ./Yux_FHE_HElib/tests/test-blockcipher-dagger-F_p`
+$ ./run_with_logging.sh ./Yux_FHE_HElib/tests/test-blockcipher-F_p
+$ ./run_with_logging.sh ./Yux_FHE_HElib/tests/test-blockcipher-dagger-F_p
 ```
 This can generate:
 - `test-blockcipher-F_p.log` (runtime and throughput of the plain implemented Yux encryption algorithm at 9, 12, and 14 rounds respectively)
@@ -71,8 +71,8 @@ This can generate:
 
 (2) 
 ```bash
-$ ./run_with_logging.sh ./Yux_FHE_HElib/tests/test-transciphering-F_p-16`
-$ ./run_with_logging.sh ./Yux_FHE_HElib/tests/test-transciphering-dagger-F_p-16`
+$ ./run_with_logging.sh ./Yux_FHE_HElib/tests/test-transciphering-F_p-16
+$ ./run_with_logging.sh ./Yux_FHE_HElib/tests/test-transciphering-dagger-F_p-16
 ``` 
 This can generate:
 - `test-transcipheringr-F_p-16(9).log` (runtime and throughput of the homomorphic implementation of the Yux decryption algorithm at 9 rounds)
@@ -80,8 +80,8 @@ This can generate:
  
 (3)   Change the pROUND parameter to 12 in the file `Yux_FHE_HElib/transciphering/param.h` by replacing `static long pROUND = 9`  to `static long pROUND = 12`，and rebuild the project. Then run
 ```bash
-$ ./run_with_logging.sh ./Yux_FHE_HElib/tests/test-transciphering-F_p-16`
-$ ./run_with_logging.sh ./Yux_FHE_HElib/tests/test-transciphering-dagger-F_p-16`
+$ ./run_with_logging.sh ./Yux_FHE_HElib/tests/test-transciphering-F_p-16
+$ ./run_with_logging.sh ./Yux_FHE_HElib/tests/test-transciphering-dagger-F_p-16
 ```  
  This can generate: 
  - `test-transcipheringr-F_p-16(12).log` (runtime and throughput of the homomorphic implementation of the Yux decryption algorithm at 12 rounds)
@@ -89,8 +89,8 @@ $ ./run_with_logging.sh ./Yux_FHE_HElib/tests/test-transciphering-dagger-F_p-16`
   
 (4) Change the pROUND parameter to 14 in the file `Yux_FHE_HElib/transciphering/param.h` by replacing `static long pROUND = 9`  to `static long pROUND = 14`，and rebuild the project. Then run
 ```bash
-$ ./run_with_logging.sh ./Yux_FHE_HElib/tests/test-transciphering-F_p-16`
-$ ./run_with_logging.sh ./Yux_FHE_HElib/tests/test-transciphering-dagger-F_p-16`
+$ ./run_with_logging.sh ./Yux_FHE_HElib/tests/test-transciphering-F_p-16
+$ ./run_with_logging.sh ./Yux_FHE_HElib/tests/test-transciphering-dagger-F_p-16
 ```  
  This can generate: 
  - `test-transcipheringr-F_p-16(14).log` (runtime and throughput of the homomorphic implementation of the Yux decryption algorithm at 14 rounds)
