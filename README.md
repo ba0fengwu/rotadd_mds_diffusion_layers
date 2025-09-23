@@ -57,7 +57,7 @@ $ cd Yux_dag_efficiency_test/Yux_FHE_HElib
 $ git checkout main
 $ mkdir build
 $ cd build
-$ cmake .. # if HElib is installed in another path, please replace "cmake .." with "cmake -DCMAKE_PREFIX_PATH=/your_path/helib_install .."
+$ cmake .. # if HElib is not installed in the default path, please replace "cmake .." with "cmake -DCMAKE_PREFIX_PATH=/your_path/helib_install .."
 $ make
 ```
 
