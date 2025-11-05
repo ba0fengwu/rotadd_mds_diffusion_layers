@@ -3,7 +3,7 @@ Codes for the paper "MDS Diffusion Layers for Arithmetization-Oriented Symmetric
 
 Clone the repository by
 ```bash
-git clone recurse-submodules https://github.com/ba0fengwu/rotadd_mds_diffusion_layers.git
+git clone --recurse-submodules https://github.com/ba0fengwu/rotadd_mds_diffusion_layers.git
 ```
 
 ---
@@ -21,9 +21,9 @@ The directory `rotadd_diff_layer/` contains:
 
 ```bash
 $ cd rotadd_diff_layer
-$ sage search_light_mds_L4m.sage # generate results in Append. A of the paper
-$ sage construct_light_mds_L4m.sage # generate results in Append. B of the paper
-$ sage inverse_light_mds_L4m.sage # generate inverses of MDS constructions in Append. B
+$ sage search_light_mds_L4m.sage # Generate all MDS L4m with rotational offsets of weight 5 with multiple values of m, and recorded the result in separate `.txt` files. Among them, `light_mds_L4m_m4.txt` and `light_mds_L4m_m8.txt` correspond to Table 3 and Table 4 in Append. A of the paper, respectively.
+$ sage construct_light_mds_L4m.sage # Generate Table 5, Table 6 and Table 7 in Append. B of the paper.
+$ sage inverse_light_mds_L4m.sage # Generate inverses of MDS constructions in Append. B, these are supplementary results and are not included in the paper.
 ```
 
 The results will be saved in `rotadd_diff_layer/results` directory. Note that some result files contain very broad tables. Please 
@@ -63,39 +63,42 @@ $ make
 
 Then go back to the directory `Yux_dag_efficiency_test` and run the bash script `run_with_logging.sh` to perform the test. The results will be outputted to `Yux_dag_efficiency_test/logs/`.
 
+**Note on Test Duration:**
+The plain implementation of the encryption algorithm test (1,000 iterations) is extremely fast, completing in milliseconds. In contrast, the homomorphic implementation of the decryption algorithm test (100 iterations) is time-consuming, taking approximately 2, 6, and 9 hours for 9, 12, and 14 rounds, respectively.
+
 (1)
 ```bash
-$ ./run_with_logging.sh ./Yux_FHE_HElib/tests/test-blockcipher-F_p
-$ ./run_with_logging.sh ./Yux_FHE_HElib/tests/test-blockcipher-dagger-F_p
+$ ./run_with_logging.sh tests/test-blockcipher-F_p
+$ ./run_with_logging.sh tests/test-blockcipher-dagger-F_p
 ```
 This can generate:
-- `test-blockcipher-F_p_***(timestamp).log` (runtime and throughput of the plain implemented Yux encryption algorithm at 9, 12, and 14 rounds respectively)
-- `test-blockcipher-dagger-F_p_***(timestamp).log ` (runtime and throughput of the plain implemented Yux_dagger encryption algorithm at 9, 12, and 14 rounds respectively)
+- `test-blockcipher-F_p_***(timestamp).log`: Contains the runtime and throughput for the plain implementation of the Yux encryption algorithm at 9, 12, and 14 rounds, corresponding to the last two columns of the first three rows in Table 2.
+- `test-blockcipher-dagger-F_p_***(timestamp).log `: Contains the runtime and throughput for the plain implementation of the Yux_dagger encryption algorithm at 9, 12, and 14 rounds, corresponding to the last two columns of the last three rows in Table 2. 
 
 (2) 
 ```bash
-$ ./run_with_logging.sh ./Yux_FHE_HElib/tests/test-transciphering-F_p-16
-$ ./run_with_logging.sh ./Yux_FHE_HElib/tests/test-transciphering-dagger-F_p-16
+$ ./run_with_logging.sh tests/test-transciphering-F_p-16
+$ ./run_with_logging.sh tests/test-transciphering-dagger-F_p-16
 ``` 
 This can generate:
-- `test-transcipheringr-F_p-16_***(timestamp).log` (runtime and throughput of the homomorphic implementation of the Yux decryption algorithm at 9 rounds)
-- `test-transciphering-dagger-F_p-16_***(timestamp).log` (runtime and throughput of the homomorphic implementation of the Yux_dagger decryption algorithm at 9 rounds) 
+- `test-transciphering-F_p-16_***(timestamp).log`: Contains the runtime and throughput for the homomorphic implementation of the Yux decryption algorithm at 9 rounds, corresponding to the last two columns of the first row in Table 1.
+- `test-transciphering-dagger-F_p-16_***(timestamp).log`: Contains the runtime and throughput for the homomorphic implementation of the Yux_dagger decryption algorithm at 9 rounds, corresponding to the last two columns of the fourth row in Table 1.
  
 (3)   Change the pROUND parameter to 12 in the file `Yux_FHE_HElib/transciphering/param.h` by replacing `static long pROUND = 9`  to `static long pROUND = 12`，and rebuild the project. Then run
 ```bash
-$ ./run_with_logging.sh ./Yux_FHE_HElib/tests/test-transciphering-F_p-16
-$ ./run_with_logging.sh ./Yux_FHE_HElib/tests/test-transciphering-dagger-F_p-16
+$ ./run_with_logging.sh tests/test-transciphering-F_p-16
+$ ./run_with_logging.sh tests/test-transciphering-dagger-F_p-16
 ```  
  This can generate: 
- - `test-transcipheringr-F_p-16_***(timestamp).log` (runtime and throughput of the homomorphic implementation of the Yux decryption algorithm at 12 rounds)
-- `test-transciphering-dagger-F_p-16_***(timestamp).log` (runtime and throughput of the homomorphic implementation of the Yux_dagger decryption algorithm at 12 rounds) 
-  
+ - `test-transcipheringr-F_p-16_***(timestamp).log`: Contains the runtime and throughput for the homomorphic implementation of the Yux decryption algorithm at 12 rounds, corresponding to the last two columns of the second row in Table 1.
+- `test-transciphering-dagger-F_p-16_***(timestamp).log`: Contains the runtime and throughput for the homomorphic implementation of the Yux_dagger decryption algorithm at 12 rounds, corresponding to the last two columns of the fifth row in Table 1.
+
 (4) Change the pROUND parameter to 14 in the file `Yux_FHE_HElib/transciphering/param.h` by replacing `static long pROUND = 9`  to `static long pROUND = 14`，and rebuild the project. Then run
 ```bash
-$ ./run_with_logging.sh ./Yux_FHE_HElib/tests/test-transciphering-F_p-16
-$ ./run_with_logging.sh ./Yux_FHE_HElib/tests/test-transciphering-dagger-F_p-16
+$ ./run_with_logging.sh tests/test-transciphering-F_p-16
+$ ./run_with_logging.sh tests/test-transciphering-dagger-F_p-16
 ```  
  This can generate: 
- - `test-transcipheringr-F_p-16_***(timestamp).log` (runtime and throughput of the homomorphic implementation of the Yux decryption algorithm at 14 rounds)
-- `test-transciphering-dagger-F_p-16_***(timestamp).log` (runtime and throughput of the homomorphic implementation of the Yux_dagger decryption algorithm at 14 rounds) 
+ - `test-transcipheringr-F_p-16_***(timestamp).log`: Contains the runtime and throughput for the homomorphic implementation of the Yux decryption algorithm at 14 rounds, corresponding to the last two columns of the third row in Table 1.
+- `test-transciphering-dagger-F_p-16_***(timestamp).log`: Contains the runtime and throughput for the homomorphic implementation of the Yux_dagger decryption algorithm at 14 rounds, corresponding to the last two columns of the sixth row in Table 1.
 
