@@ -90,7 +90,7 @@ $ ./run_with_logging.sh tests/test-transciphering-F_p-16
 $ ./run_with_logging.sh tests/test-transciphering-dagger-F_p-16
 ```  
  This can generate: 
- - `test-transcipheringr-F_p-16_***(timestamp).log`: Contains the runtime and throughput for the homomorphic implementation of the Yux decryption algorithm at 12 rounds, corresponding to the last two columns of the second row in Table 1.
+ - `test-transciphering-F_p-16_***(timestamp).log`: Contains the runtime and throughput for the homomorphic implementation of the Yux decryption algorithm at 12 rounds, corresponding to the last two columns of the second row in Table 1.
 - `test-transciphering-dagger-F_p-16_***(timestamp).log`: Contains the runtime and throughput for the homomorphic implementation of the Yux_dagger decryption algorithm at 12 rounds, corresponding to the last two columns of the fifth row in Table 1.
 
 (4) Change the pROUND parameter to 14 in the file `Yux_FHE_HElib/transciphering/param.h` by replacing `static long pROUND = 9`  to `static long pROUND = 14`，and rebuild the project. Then run
@@ -99,6 +99,6 @@ $ ./run_with_logging.sh tests/test-transciphering-F_p-16
 $ ./run_with_logging.sh tests/test-transciphering-dagger-F_p-16
 ```  
  This can generate: 
- - `test-transcipheringr-F_p-16_***(timestamp).log`: Contains the runtime and throughput for the homomorphic implementation of the Yux decryption algorithm at 14 rounds, corresponding to the last two columns of the third row in Table 1.
+ - `test-transciphering-F_p-16_***(timestamp).log`: Contains the runtime and throughput for the homomorphic implementation of the Yux decryption algorithm at 14 rounds, corresponding to the last two columns of the third row in Table 1.
 - `test-transciphering-dagger-F_p-16_***(timestamp).log`: Contains the runtime and throughput for the homomorphic implementation of the Yux_dagger decryption algorithm at 14 rounds, corresponding to the last two columns of the sixth row in Table 1.
 
